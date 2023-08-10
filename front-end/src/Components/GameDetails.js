@@ -10,7 +10,9 @@ export default function GameDetails() {
     let navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`${API}/games/${index}`).then((response) => {
+        axios.get(`${API}/games/${index}`)
+        .then((response) => {
+            console.log(response.data);
             setGame(response.data);
         })
         .catch(() => {
@@ -22,18 +24,24 @@ export default function GameDetails() {
         axios
         .delete(`${API}/games/${index}`)
         .then(() => {
-         navigate('/games');   
+         navigate('/games');  
         })
         .catch((e) => console.log(e));
     };
-    
+
     return (
         <article>
             <h3>{game.name}</h3>
-            <h5>{game.players} can play this game</h5>
+            <h5>
+                {game.players} can play this game
+            </h5>
             <h5>Game Category: {game.category}</h5>
             <h5>
-                {game.cards_required ? (<span>cards are required</span>) : (<span>no cards required</span>
+                {game.cards_required}
+                {game.cards_required ? (
+                    <span> This game requires cards</span>
+                ) : (
+                    <span>No cards are required to play this game.</span>
                 )}
             </h5>
             <h5>Gaming Instructions: {game.instructions}</h5>

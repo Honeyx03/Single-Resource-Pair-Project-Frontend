@@ -7,6 +7,7 @@ import NavBar from './Components/NavBar';
 import Games from './Components/Games';
 
 //PAGES
+import Home from './Pages/Home';
 import New from "./Pages/New";
 import Index from "./Pages/Index";
 import Show from './Pages/Show';
@@ -19,6 +20,7 @@ function App() {
       <NavBar />
       <Router>
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/games" element={<Games />} />
           <Route path="/games/new" element={<New />} />
           <Route path='/games/:index' element={<Show />} />
