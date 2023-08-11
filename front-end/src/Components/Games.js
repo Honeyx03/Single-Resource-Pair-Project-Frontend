@@ -1,59 +1,84 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";//if Link isn't working check the package.json to  make sure the "react-router-dom" is installed if not do npm install react-router-dom;
-import axios from "axios";
+import {useState, useEffect} from "react";
+import "../CSS/Games.css";
 
-//BASE URL
-const API = process.env.REACT_APP_API_URL;
-console.log(API) //log to make sure it works>> it works it shows: http://localhost:3025
+//COMPONENTS
+import SearchBar from "./SearchBar";
 
-export default function Games() {
-    const [games, setGames] = useState([]);
+export default function Games({games}) {
+    const [searchGame, setSearchGame] = useState('');
+    const [filteredGames, setFilteredGames] = useState([]);
 
-    useEffect(() => {
-        axios.get(`${API}/games`)
-        .then((response) => {
-            console.log(response);
-            console.log(response.data);
-            setGames(response.data);
-        })
-        .catch((e) => console.error("catch", e));
-    }, []);
+    //this useEffect is to filtered through the already listed games
+  useEffect(() => {
+    const filtered = games.filter(game => 
+        game.name.toLowerCase().includes(searchGame.toLocaleLowerCase())
+    );
+    setFilteredGames(filtered);
+}, [games, searchGame]);
+
+const handleSearchChange = (e) => {
+  e.preventDefault();
+
+  let typed = e.target.value;
+  setSearchGame(typed);
+  typed = ''
+}
+
 
     return (
         <div className="Games">
+            <div>
+                <SearchBar 
+                searchGame={searchGame}
+                handleSearchChange={handleSearchChange}
+                setSearchGame={setSearchGame}
+                />
+            </div>
             <section>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th># of Players</th>
-                            <th>Category</th>
-                            <th>Are Cards Required?</th>
-                            <th>Game Instructions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {games.map((game, index) => {
-                            return (
-                                <tr key={index}>
-                                    <td>
-                                        <Link to={`/games/${game.id}`}>{game.name}</Link>
-                                    </td>
-                                    <td>{game.players}</td>
-                                    <td>{game.category}</td>
-                                    <td>
-                                    {game.cards_required ? (
-                                        <span>cards are required</span>
-                                    ): (
-                                        <span>no cards required</span>
-                                    )}
-                                    </td>
-                                    <td>{game.instructions}</td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
-                </table>
+                {filteredGames.length === 0 ? (
+                            <div>
+                                <p>
+                                    Sorry, that game has not been added. No worries, you can add it here:
+                                </p>
+                                <Link to="/games/new">Add Game</Link>
+                            </div>
+                        ) : (
+                <div className="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th># of Players</th>
+                                <th>Category</th>
+                                <th>Are Cards Required?</th>
+                                <th>Game Instructions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {filteredGames.map((game, index) => {
+                                return (
+                                    <tr key={index}>
+                                        <td>
+                                            <Link to={`/games/${game.id}`}>{game.name}</Link>
+                                        </td>
+                                        <td>{game.players}</td>
+                                        <td>{game.category}</td>
+                                        <td>
+                                        {game.cards_required ? (
+                                            <span>cards are required</span>
+                                        ): (
+                                            <span>no cards required</span>
+                                        )}
+                                        </td>
+                                        <td style={{ textAlign: 'left' }}>{game.instructions}</td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                </div>
+                )}
             </section>
         </div>
     );

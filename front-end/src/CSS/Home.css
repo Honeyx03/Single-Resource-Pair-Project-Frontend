@@ -1,0 +1,49 @@
+.Home h1 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.Home h4 {
+    margin-bottom: 60px;
+}
+
+.Home h1, h4 {
+    font-family:'Roboto', sans-serif;
+    color: rgb(65, 1, 46);
+}
+
+.image-slider {
+    display: flex;
+    overflow: hidden;
+    animation: slideImages 20s linear infinite; /* Adjust the animation duration as needed */
+}
+
+@keyframes circular-motion {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+}
+
+@keyframes slideImages {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+.image-slider {
+    display: flex;
+    animation: circular-motion 30s linear infinite; /* Adjust duration and timing as needed */
+    width: 100%; /* Ensure the images fill the container width */
+}
+
+.Home img {
+    width: 300px;
+    height: auto;
+}

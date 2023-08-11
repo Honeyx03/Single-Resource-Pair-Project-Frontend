@@ -90,6 +90,9 @@ export default function GameNew() {
                 <br />
 
                 <input type="submit" />
+                <button>
+                    <Link to="/games">Nevermind!</Link>
+                </button>
             </form>
         </div>
     );

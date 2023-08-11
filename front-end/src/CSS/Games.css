@@ -1,0 +1,28 @@
+.Games {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding: 20px;
+}
+
+.table-container {
+    border: 2px solid pink;
+    border-radius: 15px;
+    margin-top: 50px;
+    overflow: hidden;
+}
+.Games table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid pink;
+    padding: 10px;
+    width: auto;
+    height: auto;
+}
+
+th {
+    background-color: rgb(251, 239, 250);
+}
