@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+// import "../CSS/GameDetails"
+import "../CSS/GameDetails.css"
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -31,22 +33,29 @@ export default function GameDetails() {
     };
 
     return (
-        <article>
+        <article className="details">
+         <div className="card"> 
+              <div className="inner">
             <h3>{game.name}</h3>
+            <div className="mark">
             <h5>
-                {game.players} can play this game
+             {game.players} can play this game
             </h5>
-            <h5>Game Category: {game.category}</h5>
-            <h5>
+            <h5 >  Game Category: {game.category}</h5>
+            <h5 > 
                 {game.cards_required}
                 {game.cards_required ? (
-                    <span> This game requires cards</span>
+                    <span>  This game requires cards</span>
                 ) : (
-                    <span>No cards are required to play this game.</span>
+                    <span> No cards are required to play this game.</span>
                 )}
             </h5>
-            <h5>Gaming Instructions: {game.instructions}</h5>
+            <h5 >  Gaming Instructions: {game.instructions}</h5>
             <div className="showNav">
+            </div>  
+            </div>
+            </div>
+            </div>    
                 <div>
                     <Link to={`/games/`}>
                         <button>Back</button>
@@ -60,7 +69,7 @@ export default function GameDetails() {
                 <div>
                     <button onClick={handleDelete}>Delete</button>
                 </div>
-            </div>
+            
         </article>
     );
 }

@@ -29,8 +29,10 @@ function App() {
       axios.get(`${API}/games`)
       .then((response) => {
           console.log(response);
+          console.log("this is the data")
           console.log(response.data);
           setGames(response.data);
+
       })
       .catch((e) => console.error("catch", e));
   }, []);

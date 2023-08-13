@@ -1,0 +1,61 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:900);
+
+h3{
+    color: rgb(241, 206, 237);
+}
+.card {
+  width:116px;
+  max-height:fit-content;
+  float:left;
+  background:#fff;
+  border-radius:5px;
+  display:table;
+  box-sizing:border-box;
+  padding:5px;
+  margin:10px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size:30px;
+  text-shadow:
+     1px  1px 0 #e163ed,
+    -1px -1px 0 #000000,
+    -1px  1px 0 #000000,
+     1px -1px 0 #000000,
+     1px  0   0 #000000,
+    -1px  0   0 #000000,
+     0   -1px 0 #000000,
+     0    1px 0 #000000,
+     4px  4px 0 #000000;
+  box-shadow:0 0 10px #aaaaaa;
+  text-align:center;
+  position:relative;
+}
+.card .inner{
+  display:table-cell;
+  vertical-align:middle;
+  border-radius:5px;
+  overflow:hidden;
+}
+
+.card .mark{
+  display:inline-block;
+  vertical-align:middle;
+  background:#ffffff;
+  margin:auto;
+  padding:0 26px;
+  border-radius:100px 60px / 120px 60px;
+  line-height:1.4;
+}
+
+
+
+.card{
+    color:#d78be1;
+  }
+  
+  .card .inner{
+    background:#7520a2;
+  }
+
+ button{
+    color: rgb(236, 98, 218);
+  }
