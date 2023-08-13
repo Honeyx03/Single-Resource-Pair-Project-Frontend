@@ -1,3 +1,45 @@
-body {
+/* body {
     background-color: rgb(228, 209, 219);
+} */
+.NewAll{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 10px double rgb(222, 47, 222);
+    margin: 30px;
+    padding: 25px;
+    font-family:Twinkle Star;
+    color: rgb(211, 41, 220);
+    background-color:rgb(234, 168, 168);
+    box-shadow:pink;
+    
+}
+.form_items{
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.submit{
+    /* margin-left: 600px; */
+    border-radius: 10px;
+    border-color: rgb(248, 243, 249);
+    font-weight: 600;
+    color: purple;
+    
+}
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
+}
+.new {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
+    margin-right: 600px;
+    margin-top: 20px;
 }

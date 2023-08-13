@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "../CSS/GameEdit.css"
+
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -54,8 +56,10 @@ export default function GameEdit() {
     }
 
     return (
-        <div className="Edit">
+        <div className="EditAll">
+            <h1> Edit Game</h1>
             <form onSubmit={handleSubmit}>
+                <div className="form_items">
                 <label htmlFor="name">Name:</label>
                 <input
                     id="name"
@@ -65,6 +69,8 @@ export default function GameEdit() {
                     placeholder="Name of game"
                     required
                 />
+            </div>
+            <div className="form_items">
                 <label htmlFor="players">Players:</label>
                 <input
                     id="players"
@@ -74,6 +80,8 @@ export default function GameEdit() {
                     placeholder="Number of players?"
                     required
                 />
+                </div>
+                <div className="form_items">
                 <label htmlFor="category">Category:</label>
                 <input 
                     id="category"
@@ -83,6 +91,8 @@ export default function GameEdit() {
                     placeholder="Game category"
                     required
                 />
+                </div>
+                <div className="form_items">
                 <label htmlFor="cards">Cards Required?</label>
                 <input 
                     id="cards"
@@ -90,6 +100,8 @@ export default function GameEdit() {
                     onChange={handleCheckboxChange}
                     checked={game.cards_required}
                 />
+                </div>
+                <div className="form_items">
                 <label htmlFor="instructions">Instructions:</label>
                 <textarea 
                     id="instructions"
@@ -99,12 +111,14 @@ export default function GameEdit() {
                     onChange={handleTextChange}
                     required
                 />
+                </div>
                 <br />
 
-                <input type="submit" />
+                <input className="submit" type="submit" />
             </form>
+            
             <Link to={`/games/${index}`}>
-                <button>Nevermind!</button>
+                <button className="new">Nevermind!</button>
             </Link>
         </div>
     );
