@@ -86,11 +86,9 @@ export default function GameEdit() {
                 <label htmlFor="cards">Cards Required?</label>
                 <input 
                     id="cards"
-                    value={game.cards_required}
                     type="checkbox"
                     onChange={handleCheckboxChange}
                     checked={game.cards_required}
-                    required
                 />
                 <label htmlFor="instructions">Instructions:</label>
                 <textarea 

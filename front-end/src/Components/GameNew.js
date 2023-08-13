@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const API = process.env.REACT_APP_API_URL;
 
 export default function GameNew() {
-    let { index } = useParams();
     const navigate = useNavigate();
     const [game, setGame] = useState({
         name: "",
@@ -16,10 +15,12 @@ export default function GameNew() {
     });
 
     const addGame = (newGame) => {
-        axios
-        .get(`${API}/games/${index}`)
+       axios
+        .post(`${API}/games`, newGame)
         .then((response) => {
             setGame(response.data);
+            navigate('/games');
+            window.location.reload();
         })
         .catch((e) => console.error(e));
     }
@@ -27,14 +28,17 @@ export default function GameNew() {
 
     const handleTextChange = (e) =>{
         setGame({ ...game, [e.target.id]: e.target.value });
+        console.log(e.target.value);
     };
 
     const handleCheckboxChange = () => {
         setGame({ ...game, cards_required: !game.cards_required });
+        console.log(game);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(game);
         addGame(game);
         //Call the addGame function with the game data and not "newGame" because the form data is stored in the "game" state variable, not "newGame." So, when we want to call the addGame function, we should pass the game data as an argument, not newGame.
     }
@@ -69,14 +73,12 @@ export default function GameNew() {
                     placeholder="Game category"
                     required
                 />
-                <label htmlFor="cards">Cards Required?</label>
+                <label htmlFor="cards_required">Cards Required?</label>
                 <input 
-                    id="cards"
-                    value={game.cards_required}
+                    id="cards_required"
                     type="checkbox"
                     onChange={handleCheckboxChange}
                     checked={game.cards_required}
-                    required
                 />
                 <label htmlFor="instructions">Instructions:</label>
                 <textarea 

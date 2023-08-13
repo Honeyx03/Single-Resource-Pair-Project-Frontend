@@ -22,9 +22,10 @@ export default function GameDetails() {
 
     const handleDelete = () => {
         axios
-        .delete(`${API}/games/${index}`)
+        .delete(`${API}/games/${game.id}`)
         .then(() => {
          navigate('/games');  
+         window.location.reload();
         })
         .catch((e) => console.log(e));
     };
