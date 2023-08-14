@@ -10,7 +10,7 @@ Welcome To The Games App
 How to use the games app :
     Browse all games by clicking “View a list of popular games and add yours to the collection!” Or “Game Collection Catalog”.
     
-     On the main page, you can view games or search for your favorite game. Want to edit a game? Click on the name of the game and click the edit button at the bottom of the screen. Once you made your edits you can click submit.
+     On the main page, you can view games or search for your favorite game. Want to edit a game? Click on the name of the game and click the edit button at the bottom of the screen. Once you made your edits you can click submit
 
    Add your own game by clicking the “ Log a New Game” button on the top right of your screen. Once you have added all the required fields click the submit button.
  
